@@ -1,5 +1,9 @@
 # Echoserver
 Echo server and client using python socket
+```
+NAME: SANTHOSH S
+REG.NO: 212224100052
+```
 # AIM:
 
 To develop a simple webserver to serve html programming pages.
@@ -86,9 +90,8 @@ httpd.serve_forever()
 
 
 ## OUTPUT:
-### CLIENT OUTPUT:
+<img width="1920" height="1200" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/194fea2f-111a-4018-b7db-5b0f21ebcb5c" />
 
-### SERVER OUTPUT:
 
 ## RESULT:
 The program is executed succesfully
