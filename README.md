@@ -31,36 +31,33 @@ Serving the HTML pages.
 Testing the webserver
 
 ## PROGRAM:
+## CLIENT
+```python
+import socket
+HOST = "127.0.0.1" 
+PORT = 65432  
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(b"SANTHOSH S, 212224100052")
+    data = s.recv(1024)
+print(f"Received {data!r}")
 ```
-from http.server import HTTPServer,BaseHTTPRequestHandler
-
-content='''
-<!doctype html>
-<html>
-<head>
-<title> My Web Server</title>
-</head>
-<body>
-<h1>Top Five Web Application Development Frameworks</h1>
-<h2>1.Django</h2>
-<h2>2. MEAN Stack</h2>
-<h2>3. React </h2>
-</body>
-</html>
-
-
-class MyServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        print("Get request received...")
-        self.send_response(200) 
-        self.send_header("content-type", "text/html")       
-        self.end_headers()
-        self.wfile.write(content.encode())
-
-print("This is my webserver") 
-server_address =('keerthi',2323)
-httpd = HTTPServer(server_address,MyServer)
-httpd.serve_forever()
+## SERVER
+```python
+import socket
+HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
+PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        print(f"Connected by {addr}")
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)
 ```
 ##  Architecture Diagram
 
@@ -90,7 +87,11 @@ httpd.serve_forever()
 
 
 ## OUTPUT:
-<img width="1920" height="1200" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/194fea2f-111a-4018-b7db-5b0f21ebcb5c" />
+## CLIENT
+<img width="1089" height="320" alt="Screenshot 2026-01-30 090114" src="https://github.com/user-attachments/assets/60601787-68e7-4620-b285-1410510daec4" />
+
+## SERVER
+<img width="1113" height="309" alt="Screenshot 2026-01-30 090351" src="https://github.com/user-attachments/assets/85ed6459-1199-48c0-afa0-60869a6ef9d5" />
 
 
 ## RESULT:
